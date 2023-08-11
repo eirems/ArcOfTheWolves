@@ -1,0 +1,429 @@
+/* Define EBGaramond font face */
+@font-face {
+  font-family: 'EBGaramond';
+  src: url('fonts/EBGaramond.ttf') format('truetype'),
+    url('fonts/EBGaramond.woff2') format('woff2');
+}
+
+/* Define FuturaPT font face */
+@font-face {
+  font-family: 'FuturaPT';
+  src: url('fonts/FuturaPT.otf') format('opentype'),
+    url('fonts/FuturaPT.woff2') format('woff2');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  width: 100%;
+  height: 100%;
+  background-color: #262b27;
+}
+
+section {
+  height: 100%;
+  transform: translateZ(0);
+}
+
+
+
+/* Horizontal scrolling content */
+
+#section5 {
+  height: 800vh;
+}
+
+#section6 {
+  height: 500vh;
+}
+
+#section7 {
+  height: 500vh;
+}
+
+#section8 {
+  height: 400vh;
+}
+
+#section9 {
+  height: 500vh;
+}
+
+#section10 {
+  height: 500vh;
+}
+
+#section11 {
+  height: 400vh;
+}
+
+@media (max-width: 1700px) {
+  #section5 {
+    height: 900vh;
+  }
+
+  #section6 {
+    height: 600vh;
+  }
+
+  #section7 {
+    height: 600vh;
+  }
+
+  #section8 {
+    height: 500vh;
+  }
+
+  #section9 {
+    height: 600vh;
+  }
+
+  #section10 {
+    height: 600vh;
+  }
+
+  #section11 {
+    height: 500vh;
+  }
+}
+
+@media (max-width: 1440px) {
+  #section5 {
+    height: 1000vh;
+  }
+
+  #section6 {
+    height: 700vh;
+  }
+
+  #section7 {
+    height: 700vh;
+  }
+
+  #section8 {
+    height: 600vh;
+  }
+
+  #section9 {
+    height: 700vh;
+  }
+
+  #section10 {
+    height: 700vh;
+  }
+
+  #section11 {
+    height: 600vh;
+  }
+}
+
+@media (max-width: 1226px) {
+  #section5 {
+    height: 1100vh;
+  }
+
+  #section6 {
+    height: 800vh;
+  }
+
+  #section7 {
+    height: 800vh;
+  }
+
+  #section8 {
+    height: 700vh;
+  }
+
+  #section9 {
+    height: 800vh;
+  }
+
+  #section10 {
+    height: 800vh;
+  }
+
+  #section11 {
+    height: 700vh;
+  }
+}
+
+.sticky {
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-color: #262b27;
+}
+
+.scroll_section {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  will-change: transform;
+  display: flex;
+  background-color: #262b27;
+  transform: translateZ(0);
+  gap: 0px;
+}
+
+img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin-right: -1px;
+  transform: translateZ(0);
+}
+
+/* Vertical scrolling content */
+.slide {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateZ(0);
+}
+
+.slide[data-bg] {
+  background-image: var(--bg);
+}
+
+/* Hamburger menu */
+
+:root {
+  --bar-width: 60px;
+  --bar-height: 8px;
+  --hamburger-gap: 6px;
+  --foreground: #7393B3;
+  --background: white;
+  --hamburger-margin: 8px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+.hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: max-content;
+  position: fixed;
+  top: calc(var(--hamburger-margin) * 0.5);
+  /* Adjust top margin */
+  left: calc(var(--hamburger-margin) * 0.5);
+  /* Adjust left margin */
+  z-index: 100;
+  cursor: pointer;
+
+  /* Dynamically adjust size based on viewport height */
+  font-size: calc(var(--bar-height) * 0.8);
+  /* Adjust as needed */
+}
+
+.hamburger-menu:has(input:checked) {
+  --foreground: #333;
+  --background: #333;
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+  border: 1px solid var(--background);
+  box-shadow: 0 0 0 1px var(--foreground);
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-radius: 9999px;
+  transform-origin: left center;
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing),
+    background-color var(--animation-timing);
+}
+
+.hamburger-menu input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+/* Default styles */
+.sidebar {
+  transition: transform var(--animation-timing);
+  transform: translateX(-100%);
+  padding: 1rem;
+  /* Increase padding for better content spacing */
+  background-color: #eee8d3;
+  height: 100vh;
+  color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  border: 2px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow-y: auto;
+  /* Keep scrolling functionality */
+  scrollbar-width: none;
+  /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none;
+  /* Hide scrollbar in IE and Edge */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
+  /* Hide scrollbar in Chrome and Safari */
+  background-color: transparent;
+  /* Optional: Set background color */
+}
+
+/* Hamburger menu toggle */
+.hamburger-menu:has(input:checked)~.sidebar {
+  transform: translateX(0);
+}
+
+/* Table of Contents */
+.toc {
+  font-family: 'FuturaPT', sans-serif;
+  font-size: 50px;
+  /* Adjust the font size as needed */
+  font-weight: bold;
+  margin: 40px 60px 20px;
+  /* Adjust the margins */
+}
+
+/* Links */
+.sidebar a {
+  font-family: 'EBGaramond', serif;
+  font-size: 30px;
+  /* Adjust the font size as needed */
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+  margin-bottom: 10px;
+}
+
+/* Link wrapper for spacing */
+.link-wrapper {
+  margin-left: 80px;
+  margin-top: 15px;
+}
+
+/* Hover effect */
+.sidebar a:hover {
+  color: #7393B3;
+}
+
+/* Floating Buttons */
+
+.image-container {
+  position: relative;
+  /* Ensure the container is positioned relatively */
+  display: inline-block;
+  /* Display images in a row */
+}
+
+.image-button {
+  position: absolute;
+  top: 17%;
+  /* Adjust the percentage to position the button vertically */
+  right: 10px;
+  z-index: 100;
+  background-color: rgb(216, 97, 97);
+  color: white;
+  padding: 10px 15px;
+  /* Adjusted padding for a more compact look */
+  border-radius: 50px;
+  /* Adding drop shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-family: 'EBGaramond', serif;
+  font-size: 14px;
+  /* Adjust the font size for a more compact look */
+  display: flex;
+  align-items: center;
+}
+
+/* Adjusting the size of the play icon based on screen width */
+.play-icon {
+  margin-left: 10px;
+  font-size: calc(4vw + 8px);
+  /* Dynamic size based on screen width */
+}
+
+/* Pop Up Player */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  width: 80%;
+  /* Adjust the width of the popup content */
+  max-width: 1200px;
+  /* Set a maximum width for larger screens */
+  height: 80%;
+  /* Adjust the height of the popup content */
+  max-height: 800px;
+  /* Set a maximum height for larger screens */
+}
+
+#video-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
